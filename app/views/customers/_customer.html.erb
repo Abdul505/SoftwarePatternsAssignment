@@ -1,0 +1,27 @@
+<% if signed_in? and @current_customer.admin? %>
+	<table class="table table-hover">
+		<thead>
+    		<tr>
+			<th data-field="#" data-sortable="true"> ID</th>
+			<th data-field="Last name" data-sortable="true">Last Name</th>
+      			<th data-field="First name" data-sortable="true">First Name</th>
+			<th data-field="E-mail" data-sortable="true">E-mail</th>
+			<th data-field="Country" data-sortable="true">Country</th>
+    		</tr>
+  		</thead>
+
+ 	 	<tbody>
+   			 <% @customers.each do |customer| %>
+     	 		<tr data-link="<%= customer_path(customer) %>">
+					<td><%= customer.id %></td>
+      			 		<td><%= customer.l_name %></td>
+      			 		<td><%= customer.f_name %></td>
+					<td><%= customer.email %></td>
+					<td><%= customer.country %></td>
+      			</tr>
+   	 		<% end %>
+		</tbody>
+	</table>
+<%= link_to 'Home Page', root_path, class: "btn btn-md btn-success pull-right" %>
+
+<%end%>

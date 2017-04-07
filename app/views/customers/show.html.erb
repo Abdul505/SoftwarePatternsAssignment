@@ -1,0 +1,18 @@
+<h1 align = "center"> <%= @customer.f_name %>'s profile</h1>
+	<div class="row">
+		<div class="well col-xs-6 col-xs-offset-3 center">
+			<%= gravatar_for @customer, size: 150%>
+				<p></br>Name :<%= @customer.f_name%>, <%= @customer.l_name%></p>
+				<p>E-mail: <%= @customer.email%> </p>
+				<p>Address: <%= @customer.address%> </p>
+				<p>City: <%= @customer.city%> </p>
+				<p>Country: <%= @customer.country%> </p>
+		<div class="product-action">
+			<%= link_to 'Edit profile', edit_customer_path(@customer), class: "btn btn-xs btn-primary" %>
+			<%= link_to 'Delete profile', @customer, method: :delete,
+				data: {confirm: "Are you sure ? "},
+				class: "btn btn-xs btn-danger" %>
+			<%= link_to 'Home Page', root_path, class: "btn btn-xs btn-success" %>
+		</div>
+	</div>
+</div>

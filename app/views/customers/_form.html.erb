@@ -1,0 +1,100 @@
+<%= render 'shared/errors', object: @customer %>
+
+<div class ='row'>
+    <div class = 'col-xs-12'>
+        <%= form_for(@customer, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+ 	<div class="form-group">
+                  <div class="control-label col-sm-2">
+                      <%= f.label :f_name %>
+                  </div>
+                  <div class="col-sm-8">
+                     <%= f.text_field :f_name, class: "form-control",  placeholder: "First Name", autofocus: true  %>
+                  </div>
+              </div>
+
+	<div class="form-group">
+                  <div class="control-label col-sm-2">
+                      <%= f.label :l_name %>
+                  </div>
+                  <div class="col-sm-8">
+                     <%= f.text_field :l_name, class: "form-control",  placeholder: "Last Name"  %>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <div class="control-label col-sm-2">
+                      <%= f.label :email %>
+                  </div>
+                  <div class="col-sm-8">
+                      <%= f.text_field :email, class: "form-control",  placeholder: "E-Mail" %>
+                 </div>
+             </div>
+
+             <div class="form-group">
+                 <div class="control-label col-sm-2">
+                     <%= f.label :address %>
+	   </div>
+	   <div class="col-sm-8">
+                     <%= f.text_area :address, class: "form-control",  placeholder: "Address"%>
+                 </div>
+             </div>
+
+             <div class="form-group">
+                 <div class="control-label col-sm-2">
+                     <%= f.label :city %>
+	   </div>
+	   <div class="col-sm-8">
+                     <%= f.text_field :city, class: "form-control",  placeholder: "City"%>
+                 </div>
+             </div>
+
+             <div class="form-group">
+                 <div class="control-label col-sm-2">
+	       <%= f.label :country %>
+	   </div>
+	   <div class="col-sm-8">
+                     <%= f.text_field :country,  class: "form-control",  placeholder: "Country"%>
+                 </div>
+             </div>
+
+             <div class="form-group">
+                 <div class="control-label col-sm-2">
+                     <%= f.label :password %>
+	   </div>
+	   <div class="col-sm-8">
+                     <%= f.password_field :password, class: "form-control",  placeholder: "Password"%>
+                 </div>
+             </div>
+
+             <div class="form-group">
+                 <div class="control-label col-sm-2">
+                     <%= f.label :password_confirmation %>
+	   </div>
+	   <div class="col-sm-8">
+                     <%= f.password_field :password_confirmation, class: "form-control",  placeholder: "password Confirmation"%>
+                 </div>
+             </div>
+
+             <div class="form-group">
+                 <div class="col-sm-offset-2 col-sm-2">
+                     <%= f.submit(@customer.new_record? ? "sign up" : "update account", class: 'btn btn-primary btn-lg' )%>
+  	   </div>
+       <div class="col-sm-offset-4 col-sm-2">
+       <%= link_to 'Back', @customer, class: 'btn btn-primary btn-lg pull-right' %>
+       </div>
+             </div>
+           <% end %>
+       </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+ 
