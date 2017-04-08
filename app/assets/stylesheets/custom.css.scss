@@ -141,28 +141,96 @@ html, body {
 	border: none;
 	margin-left: 50px;
 }
-footer {
-	margin-top: 45px;
-	padding-top: 5px;
-	border-top: 1px solid #eaeaea;
-	color: #777;
-	overflow-y: hidden;
-	position: relative;
+//footer
+.full {
+    width: 100%;
 }
-footer a:hover {
-	color: gray;
+.gap {
+	height: 30px;
+	width: 100%;
+	clear: both;
+	display: block;
 }
-footer small {
+.footer {
+	background: #EDEFF1;
+	position:fixed;
+	padding-bottom: 2px;
+  bottom:0;
+  left:0;
+	width: 100%;
+	border-bottom: 1px solid #CCCCCC;
+	border-top: 1px solid #DDDDDD;
+}
+.footer p {
+	margin: 0;
+	padding-bottom: 2px;
+}
+.footer img {
+	max-width: 100%;
+	padding-bottom: 2px;
+}
+.footer h3 {
+	border-bottom: 1px solid #BAC1C8;
+	color: #54697E;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 27px;
+	padding: 40px 0 10px;
+	text-transform: uppercase;
+}
+.footer ul {
+	font-size: 13px;
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 0;
+	padding-bottom: 2px;
+	margin-top: 15px;
+	color: #7F8C8D;
+}
+.footer ul li a {
+	padding: 5px 5px 5px 5px;
+	display: block;
+}
+.footer a {
+	color: #78828D
+}
+.supportLi h4 {
+	font-size: 20px;
+	font-weight: lighter;
+	line-height: normal;
+	margin-bottom: 0 !important;
+	padding-bottom: 0;
+}
+.newsletter-box input#appendedInputButton {
+	background: #FFFFFF;
+	display: inline-block;
 	float: left;
+	height: 30px;
+	clear: both;
+	width: 100%;
 }
-footer ul {
-	float: right;
-	list-style: none;
+.newsletter-box .btn {
+	border: medium none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+	border-radius: 3px;
+	display: inline-block;
+	height: 40px;
+	padding: 0;
+	width: 100%;
+	color: #fff;
 }
-footer ul li {
-	float: left;
-	margin-left: 15px;
+.newsletter-box {
+	overflow: hidden;
 }
+.bg-gray {
+	background-image: -moz-linear-gradient(center bottom, #BBBBBB 0%, #F0F0F0 100%);
+	box-shadow: 0 1px 0 #B4B3B3;
+}
+
+//end fotter
 .beta{
   background:#663300;
   padding: 2px 5px;
