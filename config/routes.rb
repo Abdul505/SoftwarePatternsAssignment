@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :lineitems
+  resources :carts
+  resources :comments
+  resources :orders
+  resources :categories
+  resources :products
   get 'sessions/new'
 
   get 'sessions/create'

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  paymethod: MyString
+  total: 1.5
+  customer_id: 1
+
+two:
+  paymethod: MyString
+  total: 1.5
+  customer_id: 1

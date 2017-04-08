@@ -8,6 +8,10 @@ module ApplicationHelper
 		end
 	end
 
+  def euro(amount)
+		number_to_currency(amount, :unit => '€ ')
+	end
+  
   def gravatar_for(customer, options = {size: 80})
 		gravatar_id = Digest::MD5::hexdigest(customer.email.downcase)
 		size = options[:size]
