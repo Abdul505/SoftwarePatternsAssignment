@@ -1,3 +1,10 @@
+<!--hide alerts-->
+<script>
+$(document).ready(function(){
+  $('div.alert').delay(2000).fadeOut(1000);
+});
+</script>
+
 <%= render 'shared/errors', object: @customer %>
 
 <div class ='row'>
@@ -86,15 +93,3 @@
            <% end %>
        </div>
  </div>
-
-
-
-
-
-
-
-
-
-
-
- 

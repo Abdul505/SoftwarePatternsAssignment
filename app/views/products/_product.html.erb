@@ -1,0 +1,33 @@
+<div class="row">
+		<% object.each do |product| %>
+			  <div class="col-sm-6 col-md-4">
+				  <div class="thumbnail">
+					<div id="contPic">
+					  <%= image_tag product.product_pic, :size => '300x250', class:"img-thumbnail" %>
+				 	 </div>
+				 	 <div class="caption">
+						<h4 align="center"><%=  link_to product.product_name , product_path(product) %></h4>
+						<p> colour: <%= product.colour %></p>
+						<p> size: <%= product.size %></p>
+						<p> price: <%= euro product.price %></p>
+						<p> code: # <%= product.product_number %></p>
+
+            <%if product.categories.any? %>
+							<p>Category: <%= render product.categories %></p>
+						<%end%>
+
+						<div class=" well product-action">
+							<% if signed_in? and @current_customer.admin? %>
+								<%= link_to 'Edit', edit_product_path(product), class: "btn btn-md btn-primary" %>
+								<%= link_to 'Delete ', product, method: :delete, data: {confirm: "Are you sure ? "},class: "btn btn-md btn-danger" %>
+							<%end%>
+					</div>
+				</div>
+			</div>
+		</div>
+	<%end%>
+</div>
+
+<% if signed_in? and @current_customer.admin? %>
+<%= link_to "New Product", new_product_path, class: "btn btn-primary"%>
+<%end%>

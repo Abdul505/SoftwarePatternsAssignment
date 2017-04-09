@@ -1,44 +1,35 @@
-<p id="notice"><%= notice %></p>
+<!--hide alerts-->
+<script>
+$(document).ready(function(){
+  $('div.alert').delay(2000).fadeOut(1000);
+});
+</script>
 
-<p>
-  <strong>Product name:</strong>
-  <%= @product.product_name %>
-</p>
+<div class="row">
+ 	 <div class="well col-xs-10 col-xs-offset-1">
+		  <div class="thumbnail">
+			  <%= image_tag @product.product_pic, :size => '200x200'%>
+		  	<div class="caption">
+				<h3 class = "center"><%= @product.product_name %></h3>
+			  	<p>Description: <%= @product.description %></p>
+			  	<p>Colour: <%= @product.colour %></p>
+			  	<p>Size: <%= @product.size %></p>
+			 	<p>Price: <%= euro @product.price %></p>
+			  	<p>Code: # <%= @product.product_number %></p>
+				 <% if @product.categories.any? %>
+				<p>Categories: <%= render @product.categories %></p>
+				<%end%>
+			  </div>
 
-<p>
-  <strong>Product pic:</strong>
-  <%= @product.product_pic %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Colour:</strong>
-  <%= @product.colour %>
-</p>
-
-<p>
-  <strong>Size:</strong>
-  <%= @product.size %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Product number:</strong>
-  <%= @product.product_number %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @product.quantity %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+			<div class="product-actions">
+		<%= link_to 'View all products', products_path, class: "btn btn-md btn-success" %>
+		<% if signed_in? and @current_customer.admin? %>
+			<%= link_to 'Edit this product', edit_product_path(@product), class: "btn btn-md btn-primary" %>
+			<%= link_to 'Delete this product', product_path(@product), method: :delete,
+						data: {confirm: "Are you sure ? "},
+						class: "btn btn-md btn-danger"%>
+			<%end%>
+			</div>
+		</div>
+	</div>
+</div>

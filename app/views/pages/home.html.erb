@@ -1,3 +1,10 @@
+<!--hide alerts-->
+<script>
+$(document).ready(function(){
+  $('div.alert').delay(2000).fadeOut(1000);
+});
+</script>
+
 <% if !signed_in? %>
     <h1>Sign in to see the message :)</h1>
 <% end %>

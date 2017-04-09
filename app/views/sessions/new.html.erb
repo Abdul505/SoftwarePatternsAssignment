@@ -1,3 +1,10 @@
+<!--hide alerts-->
+<script>
+$(document).ready(function(){
+  $('div.alert').delay(2000).fadeOut(1000);
+});
+</script>
+
 <h1 align="center">sign in</h1>
 
 <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>

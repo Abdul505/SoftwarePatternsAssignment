@@ -1,9 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<!--hide alerts-->
+<script>
+$(document).ready(function(){
+  $('div.alert').delay(2000).fadeOut(1000);
+});
+</script>
+<h1 align="center"><%= "Category: " + @category.name %></h1>
+<div align="center">
+  <% if signed_in? and @current_customer.admin? %>
+    <div class="row">
+      <span class="badge"><%= link_to "Edit Category Name", edit_category_path(@category) %></span>
+    </div>
+  <% end %>
+  <%= will_paginate @category_products %>
+</div>
+<%= render 'products/product', object: @category_products %>
+<div align="center">
+  <%= will_paginate @category_products %>
+</div>

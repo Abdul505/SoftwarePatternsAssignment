@@ -1,0 +1,10 @@
+<!--hide alerts-->
+<script>
+$(document).ready(function(){
+  $('div.alert').delay(2000).fadeOut(1000);
+});
+</script>
+
+<span class="badge">
+  <%= link_to category.name, category_path(category) %>
+  &nbsp;</span>

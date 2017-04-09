@@ -1,27 +1,30 @@
-<p id="notice"><%= notice %></p>
+<!--hide alerts-->
+<script>
+$(document).ready(function(){
+  $('div.alert').delay(2000).fadeOut(1000);
+});
+</script>
 
-<h1>Listing Categories</h1>
+<h1 align="center">All Categories</h1></br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
+<div align="center">
+  <%= will_paginate %>
+  <% @categories.each do |category| %>
+    <ul class="listing">
+      <div class="row">
+        <div class="well well_categories col-md-4 col-md-offset-4">
+          <li class="product-title">
+            <strong>
+              <%= link_to "#{category.name}", category_path(category) %>
+            </strong>
+          </li></br>
+          <li><small><%= pluralize(category.products.count, "products") %></small></li>
+        </div>
+      </div>
+    </ul>
+  <% end %>
+  <%= will_paginate %>
+  </div>
+<% if signed_in? and @current_customer.admin? %>
+  <%= link_to 'New Category', new_category_path, class: "btn btn-primary" %>
+<%end%>

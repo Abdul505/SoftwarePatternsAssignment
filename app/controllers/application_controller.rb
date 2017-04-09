@@ -4,14 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include ApplicationHelper
-
     def authorise
       unless signed_in?
         store_location
         redirect_to login_path, :notice => "Please Sign in to get access"
       end
     end
-
 
 private
     def store_location

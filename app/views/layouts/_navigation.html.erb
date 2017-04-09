@@ -8,30 +8,43 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span><%=link_to "DIT Amazon", root_path, class: "navbar-brand", id: "logo"%></span>
+      <!-- <a class="navbar-brand" href="#">CORE</a> -->
+      <span><%=link_to "DIT Amazon", root_path, class: "navbar-brand"%></span>
       <span class="beta">Beta</span>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <!-- customers -->
-        <% if signed_in? and @current_customer.admin? %>
-            <li><%= link_to "Customers", customers_path, id: "logo"%></li>
-        <% end %>
-        <!-- add here -->
-        <!-- end here -->
+         <!-- customers -->
+         <% if signed_in? and @current_customer.admin? %>
+             <li><%= link_to "Customers", customers_path%></li>
+         <% end %>
+
+         <!-- product -->
+          <li><%= link_to "Product", products_path%></li>
+
+         <!-- category -->
+          <li><%= link_to "Categories", categories_path%></li>
+
       </ul>
-    <!-- end class="nav navbar-nav"  -->
-    <!-- Sign up/in/out -->
+      <!-- end nav bar -->
+
+      <!-- search -->
+      <div id = "search">
+      <%= render 'products/search' %>
+      </div>
+
+      <!-- nav bar right -->
+      <!-- Sign up/in/out -->
       <ul class="nav navbar-nav navbar-right">
         <% if !signed_in? %>
-          <li><%= link_to "Sign in", login_path , id:"logo"%></li>
-          <li><%= link_to "Register", new_customer_path, id:"logo"%></li>
+          <li><%= link_to "Sign in", login_path%></li>
+          <li><%= link_to "Register", new_customer_path%></li>
         <% else %>
-          <li><%= link_to "Sign out", logout_path, method: :delete,id: "logo" %></li>
-          <li><%= link_to "View Profile", customer_path(@current_customer), id: "logo" %></li>
+          <li><%= link_to "Sign out", logout_path, method: :delete %></li>
+          <li><%= link_to "View Profile", customer_path(@current_customer)%></li>
         <%end%>
-      </ul>
+      </ul> <!-- nav bar right -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

@@ -7,24 +7,113 @@ html, body {
 	max-width: 100%;
 	overflow-x: hidden;
 }
-#logo {
-	float: left;
-	font-size: 1,7em;
-	color: black;
-	text-transform: uppercase;
-	letter-spacing: -1px;
-	font-weight: bold;
+
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+html, body {
+  font-family: 'Lato', serif;
 }
-#logo:hover {
-	color: #fff;
-	text-decoration: none;
+//nav bar new
+.navbar-default {
+  font-size: 1.15em;
+  font-weight: 400;
+  background-color: #006b96;
+  padding: 10px;
+  border: 0px;
+  border-radius: 0px;
 }
-#colore{
-	font-color: white;
+
+.navbar-default .navbar-nav>li>a {
+  color: white;
 }
-.center {
-	text-align: center;
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: #cbf0ff;
 }
+
+.navbar-default .navbar-brand {
+  color: #002433;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #ffffff;
+  text-shadow: 1px -1px 8px #b3e9ff;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+  background-color: #004059;
+  color: white;
+}
+
+.navbar-default .navbar-toggle {
+  border: none;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border: none;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #002433;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+
+.dropdown-menu {
+  background-color: #004059;
+  color: white;
+  border: 0px;
+  border-radius: 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.dropdown-menu>li>a {
+  background-color: #004059;
+  color: white;
+}
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+  background-color: #004059;
+  color:white;
+}
+
+.dropdown-menu .divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #003246;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .dropdown-menu>li>a {
+    background-color: #006b96;
+    color: #ffffff;
+  }
+  .dropdown-menu>li>a:hover {
+    color: #ffffff;
+  }
+
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus, .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+    color: #ffffff;
+    background-color: transparent;
+  }
+
+  .dropdown-menu .divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #005577;
+  }
+}
+
 .jumbotron {
 	background-image: asset-url('homepic.jpeg');
 	background-repeat: no-repeat;
@@ -83,6 +172,9 @@ html, body {
 	padding-top: 15px;
 	padding-bottom: 15px;
  }
+ .center {
+	text-align: center;
+}
  .listing {
 	 list-style: none;
 	 padding-left: 0;
@@ -134,8 +226,9 @@ html, body {
 	overflow-y: hidden;
 	overflow-x: hidden;
 	width:300px ;
-	height: 300px;
+	height: 200px;
 	border: none;
+	margin: -10px;
 }
 .img-thumbnail {
 	border: none;
@@ -152,17 +245,24 @@ html, body {
 	display: block;
 }
 .footer {
-	background: #EDEFF1;
-	position:fixed;
-	padding-bottom: 2px;
+	 background: #EDEFF1;
+	 position: relative;
+	 margin-top: 70px;
+	// position:fixed;
+	// margin-top: 50px;
+	// padding-top: 10px;
+	// padding-bottom: 2px;
   bottom:0;
   left:0;
 	width: 100%;
 	border-bottom: 1px solid #CCCCCC;
 	border-top: 1px solid #DDDDDD;
+	// margin-top: 45px;
+	// padding-top: 5px;
 }
 .footer p {
 	margin: 0;
+	padding-top: 10px;
 	padding-bottom: 2px;
 }
 .footer img {
@@ -175,7 +275,7 @@ html, body {
 	font-size: 18px;
 	font-weight: 600;
 	line-height: 27px;
-	padding: 40px 0 10px;
+	// padding: 40px 0 10px;
 	text-transform: uppercase;
 }
 .footer ul {
@@ -188,7 +288,7 @@ html, body {
 	color: #7F8C8D;
 }
 .footer ul li a {
-	padding: 5px 5px 5px 5px;
+	// padding: 5px 5px 5px 5px;
 	display: block;
 }
 .footer a {

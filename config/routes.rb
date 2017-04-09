@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :lineitems
-  resources :carts
-  resources :comments
-  resources :orders
   resources :categories
   resources :products
+  resources :comments
+  resources :products
+
   get 'sessions/new'
 
   get 'sessions/create'
@@ -26,6 +25,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'pages#home'
+  get 'search' => 'products#search'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -56,8 +56,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end
@@ -73,6 +72,5 @@ Rails.application.routes.draw do
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  #     #   end
 end
