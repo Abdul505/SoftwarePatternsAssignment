@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :categories
   resources :products
-  resources :comments
-  resources :products
+  resources :customers
+
+  resources :products do
+		resources :comments
+  end
+
 
   get 'sessions/new'
 
@@ -10,7 +15,7 @@ Rails.application.routes.draw do
 
   get 'sessions/destroy'
 
-  resources :customers
+
   get 'pages/home'
 
   controller :sessions do

@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   has_many :product_categories
 	has_many :categories, through: :product_categories
+  has_many :comments
 
   validates :product_name, presence: true
 	validates :description, presence: true
@@ -13,4 +14,8 @@ class Product < ActiveRecord::Base
 	end
 
 	SIZES = ["None", "Small", "Medium", "Large", "Extra-Large"]
+
+  def average_stars
+		comments.average(:stars)
+	end
 end

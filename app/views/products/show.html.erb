@@ -6,7 +6,7 @@ $(document).ready(function(){
 </script>
 
 <div class="row">
- 	 <div class="well col-xs-10 col-xs-offset-1">
+ 	 <div class="well col-xs-5 col-xs-offset-0">
 		  <div class="thumbnail">
 			  <%= image_tag @product.product_pic, :size => '200x200'%>
 		  	<div class="caption">
@@ -32,4 +32,40 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
+
+   	 <div class="well col-xs-5 col-xs-offset-2">
+  		 <div class="well thumbnail">
+  			<%= form_for([@product, Comment.new]) do |f| %>
+  				</br>
+  				<%= f.text_area :content, :rows => 8, :cols => 50 %>
+
+  					<div class="form-group">
+              <br>
+  						<%= f.submit class: 'btn btn-primary btn-lg'%>
+    				</div>
+  			 <%end%>
+  		</div>
+  	</div>
+<!-- end row -->
+</div>
+
+</br></br>
+<div class="row">
+<div class="caption ">
+  <% if @product.comments.empty? %>
+    <h3># You are the first Comment # </h3>
+  <%else%>
+    <h2 class="center">What other felt about this </h2>
+</div>
+<div  class = "cont">
+  <h2><% @product.comments.reverse.each do |comment| %></h2>
+     <div class="panel-body well"></br>
+          <p><h3>- <%= comment.content%></h3>
+    <h5 align="right">Posted <%= time_ago_in_words (comment.created_at)%> ago by : '
+      <%= comment.customer.f_name %> '</p></h5>
+    </div>
+  <%end%>
+</div>
+<%end%>
+</div>
 </div>
