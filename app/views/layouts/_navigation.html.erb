@@ -44,7 +44,7 @@
           <li><%= link_to "Sign out", logout_path, method: :delete %></li>
           <li><%= link_to "View Profile", customer_path(@current_customer)%></li>
            <% if signed_in? and !@current_customer.admin? %>
-            <li><%= mail_to "d12125625@mydit.ie", "Email us" %></li>
+            <li><%= link_to "my cart", orders_path %></li>
            <%end%>
         <%end%>
       </ul> <!-- nav bar right -->

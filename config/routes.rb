@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :lineitems
+  resources :orders
+  resources :carts
   resources :comments
   resources :categories
   resources :products
@@ -8,6 +11,9 @@ Rails.application.routes.draw do
 		resources :comments
   end
 
+  resources :carts do
+    resources :lineitems
+  end
 
   get 'sessions/new'
 

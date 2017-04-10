@@ -21,6 +21,9 @@
 								<%= link_to 'Edit', edit_product_path(product), class: "btn btn-md btn-primary" %>
 								<%= link_to 'Delete ', product, method: :delete, data: {confirm: "Are you sure ? "},class: "btn btn-md btn-danger" %>
 							<%end%>
+							<% if signed_in? %>
+								<%= link_to 'Add to cart', lineitems_path(product_id: product), class: "btn btn-md btn-primary ", method: :post %>
+							<%end%>
 					</div>
 				</div>
 			</div>

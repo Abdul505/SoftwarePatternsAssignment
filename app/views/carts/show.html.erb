@@ -1,0 +1,24 @@
+<table class="table table-hover">
+		<thead>
+    		<tr>
+				<th><h2> Shopoing Cart </h2></th>
+      	<th>Price</th>
+				<th>Quantity</th>
+    		</tr>
+  		</thead>
+
+ 	 	<tbody>
+   			 <% @cart.lineitems.each do |item| %>
+     	 		<tr class="well">
+					<td><img class="media-object"> <%= image_tag item.product.product_pic , :size => '100x100'%>
+					&emsp;&emsp;<%= item.product.product_name %></td>
+      			 	<td></br><%= euro item.product.price * item.quantity %></td>
+      			 	<td></br>&emsp;&emsp; <%= item.quantity %>
+              </td>
+            </tr>
+   	 		<% end %>
+		</tbody>
+</table>
+	<%= link_to "Empty cart", @cart, method: :delete, confirm: 'Are you sure?', class: "btn btn-md btn-success" %>
+	&emsp;<%= link_to "Continue Shopping", products_path, class: "btn btn-md btn-primary" %>
+	<%= link_to "Checkout", new_order_path, class: "btn btn-md btn-success pull-right" %>

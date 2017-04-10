@@ -1,7 +1,8 @@
 class Customer < ActiveRecord::Base
   has_secure_password
   has_many :comments
-  
+  has_many :orders
+
   VALID_EMAIL_VAL = /\A[\w+\-.]+@[A-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true , length: {maximum: 105},
      uniqueness: {case_sensitvity: false},
