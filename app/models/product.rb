@@ -16,6 +16,6 @@ class Product < ActiveRecord::Base
 	SIZES = ["None", "Small", "Medium", "Large", "Extra-Large"]
 
   def average_stars
-		comments.average(:stars)
+		comments.average(:star)
 	end
 end

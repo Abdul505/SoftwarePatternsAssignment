@@ -33,22 +33,30 @@ $(document).ready(function(){
 		</div>
 	</div>
 
+<!-- comment -->
    	 <div class="well col-xs-5 col-xs-offset-2">
   		 <div class="well thumbnail">
   			<%= form_for([@product, Comment.new]) do |f| %>
   				</br>
+            <h3><%=f.label :star %>
+            <% star = [1,2,3,4,5]%>
+            <%star.each do |star|%>
+            <%=f.radio_button :star, star %> <%=star%>
+            <%end%>
+            </h3>
+          </br>
   				<%= f.text_area :content, :rows => 8, :cols => 50 %>
 
   					<div class="form-group">
               <br>
-  						<%= f.submit class: 'btn btn-primary btn-lg'%>
+  						<%= f.submit "Post a comment", class: 'btn btn-primary btn-lg'%>
     				</div>
   			 <%end%>
   		</div>
   	</div>
 <!-- end row -->
 </div>
-
+<!-- show comment -->
 </br></br>
 <div class="row">
 <div class="caption ">
@@ -61,6 +69,7 @@ $(document).ready(function(){
   <h2><% @product.comments.reverse.each do |comment| %></h2>
      <div class="panel-body well"></br>
           <p><h3>- <%= comment.content%></h3>
+            <%= number_with_precision(@product.average_stars, precision:0)%>
     <h5 align="right">Posted <%= time_ago_in_words (comment.created_at)%> ago by : '
       <%= comment.customer.f_name %> '</p></h5>
     </div>
