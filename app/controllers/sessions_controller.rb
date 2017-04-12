@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 	  if customer && customer.authenticate(params[:session][:password])
 		  session[:customer_id] = customer.id
 		  flash[:success] = "Welcome back"
-		  redirect_to session[:return_to] || root_path
+		  redirect_to root_path
 	  else
 		  flash[:danger] = "Invalid email / password "
 		  render'new'
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 	  if signed_in?
 		  session[:customer_id] = nil
 	  else
-		  flash[:notice] = "You need to sign in"
+		  flash[:info] = "You need to sign in"
 	  end
 	  redirect_to root_path
   end

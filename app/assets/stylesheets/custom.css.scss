@@ -8,7 +8,6 @@ html, body {
 	overflow-x: hidden;
 }
 
-
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 
 html, body {
@@ -115,7 +114,7 @@ html, body {
 }
 
 .jumbotron {
-	background-image: asset-url('homepic.jpeg');
+	background-image: asset-url('home.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
@@ -234,6 +233,17 @@ html, body {
 	border: none;
 	margin-left: 50px;
 }
+
+//loginbox sign in image
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
 //footer
 .full {
     width: 100%;
@@ -339,3 +349,74 @@ html, body {
   font-size: 11px;
   text-transform: uppercase;
 }
+
+
+//homepage
+
+*{
+ margin: 0;
+ padding: 0;
+ outline: none;
+ border: none;
+   box-sizing: border-box;
+}
+*:before,
+*:after{
+ box-sizing: border-box;
+}
+.homecontainer{
+ margin: 4% auto;
+ width: 210px;
+ height: 140px;
+ position: relative;
+ perspective: 700px;
+}
+#homecarousel{
+ width: 100%;
+ height: 100%;
+ position: absolute;
+ transform-style: preserve-3d;
+ animation: rotation 10s infinite linear;
+}
+#homecarousel:hover{
+ animation-play-state: paused;
+}
+#homecarousel figure{
+ display: block;
+ position: absolute;
+ width: 90%;
+ height: 50%px;
+ left: 10px;
+ top: 10px;
+ background: black;
+ overflow: hidden;
+ border: solid 5px black;
+}
+#homecarousel figure:nth-child(1){transform: rotateY(0deg) translateZ(288px);}
+#homecarousel figure:nth-child(2) { transform: rotateY(40deg) translateZ(288px);}
+#homecarousel figure:nth-child(3) { transform: rotateY(80deg) translateZ(288px);}
+#homecarousel figure:nth-child(4) { transform: rotateY(120deg) translateZ(288px);}
+#homecarousel figure:nth-child(5) { transform: rotateY(160deg) translateZ(288px);}
+#homecarousel figure:nth-child(6) { transform: rotateY(200deg) translateZ(288px);}
+#homecarousel figure:nth-child(7) { transform: rotateY(240deg) translateZ(288px);}
+#homecarousel figure:nth-child(8) { transform: rotateY(280deg) translateZ(288px);}
+#homecarousel figure:nth-child(9) { transform: rotateY(320deg) translateZ(288px);}
+
+img{
+ -webkit-filter: grayscale(1);
+ cursor: pointer;
+ transition: all .5s ease;
+}
+img:hover{
+ -webkit-filter: grayscale(0);
+ transform: scale(1.2,1.2);
+}
+
+@keyframes rotation{
+ from{
+   transform: rotateY(0deg);
+ }
+ to{
+   transform: rotateY(360deg);
+ }
+ }
