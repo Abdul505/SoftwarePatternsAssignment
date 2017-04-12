@@ -21,7 +21,7 @@
          <% end %>
 
          <!-- product -->
-          <li><%= link_to "Product", products_path%></li>
+          <li><%= link_to "Products", products_path%></li>
 
          <!-- category -->
           <li><%= link_to "Categories", categories_path%></li>
@@ -38,13 +38,13 @@
       <!-- Sign up/in/out -->
       <ul class="nav navbar-nav navbar-right">
         <% if !signed_in? %>
-          <li><%= link_to "Sign in", login_path%></li>
-          <li><%= link_to "Register", new_customer_path%></li>
+          <li><%= link_to "Sign in", login_path, class: "btn btn-success"%></li>
+          <li><%= link_to "Register", new_customer_path, class: "btn btn-primary"%></li>
         <% else %>
-          <li><%= link_to "Sign out", logout_path, method: :delete %></li>
+          <li><%= link_to "Sign out", logout_path, method: :delete, class: "btn btn-danger" %></li>
           <li><%= link_to "View Profile", customer_path(@current_customer)%></li>
            <% if signed_in? and !@current_customer.admin? %>
-            <li><%= link_to "my cart", orders_path %></li>
+            <li><%= link_to "my orders", orders_path %></li>
            <%end%>
         <%end%>
       </ul> <!-- nav bar right -->

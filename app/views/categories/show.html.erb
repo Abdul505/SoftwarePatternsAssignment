@@ -4,16 +4,20 @@ $(document).ready(function(){
   $('div.alert').delay(2000).fadeOut(1000);
 });
 </script>
+<br>
 <h1 align="center"><%= "Category: " + @category.name %></h1>
+<br><br>
 <div align="center">
   <% if signed_in? and @current_customer.admin? %>
     <div class="row">
       <span class="badge"><%= link_to "Edit Category Name", edit_category_path(@category) %></span>
     </div>
   <% end %>
+  <br><br><br>
   <%= will_paginate @category_products %>
 </div>
 <%= render 'products/product', object: @category_products %>
 <div align="center">
   <%= will_paginate @category_products %>
 </div>
+<br>
