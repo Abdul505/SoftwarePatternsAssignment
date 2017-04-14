@@ -15,9 +15,9 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.paymethod %></td>
-        <td><%= order.total %></td>
-        <td><%= order.customer_id %></td>
+        <td><%=order.paymethod %></td>
+        <td><%=order.total%></td>
+        <td><%=order.customer_id %></td>
         <td><%= link_to 'Show', order, class: "btn btn-md btn-success" %></td>
         <td><%= link_to 'Edit', edit_order_path(order), class: "btn btn-md btn-warning" %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-danger" %></td>

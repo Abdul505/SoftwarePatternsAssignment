@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
     def authorise
       unless signed_in?
         store_location
-        redirect_to login_path, :notice => "Please Sign in to get access"
+        flash[:info] = "Please Sign in to get access"
+        redirect_to login_path
       end
     end
 

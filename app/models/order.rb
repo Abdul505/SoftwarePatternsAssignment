@@ -10,5 +10,5 @@ class Order < ActiveRecord::Base
 	end
 
 
-	METHODS = ["None", "Visa", "Master Card", "American Express", "PayPal"]
+	METHODS = ["Visa", "Master Card", "American Express", "PayPal"]
 end

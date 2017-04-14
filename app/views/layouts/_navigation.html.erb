@@ -26,6 +26,15 @@
          <!-- category -->
           <li><%= link_to "Categories", categories_path%></li>
 
+          <% if signed_in? and @current_customer.admin? %>
+              <li><%= link_to "carts", carts_path%></li>
+          <% end %>
+          <% if signed_in? and @current_customer.admin? %>
+              <li><%= link_to "lineitems", lineitems_path%></li>
+          <% end %>
+          <% if signed_in? and @current_customer.admin? %>
+              <li><%= link_to "Comments", comments_path%></li>
+          <% end %>
       </ul>
       <!-- end nav bar -->
 
@@ -45,6 +54,9 @@
           <li><%= link_to "View Profile", customer_path(@current_customer)%></li>
            <% if signed_in? and !@current_customer.admin? %>
             <li><%= link_to "my orders", orders_path %></li>
+           <%end%>
+           <% if signed_in? and @current_customer.admin? %>
+            <li><%= link_to " Customers order", orders_path %></li>
            <%end%>
         <%end%>
       </ul> <!-- nav bar right -->

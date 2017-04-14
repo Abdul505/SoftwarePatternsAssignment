@@ -2,7 +2,7 @@
 
 <h1>Listing Lineitems</h1>
 
-<table>
+<table class="table table-hover thead-inverse"  border="3">
   <thead>
     <tr>
       <th>Quantity</th>
@@ -20,14 +20,10 @@
         <td><%= lineitem.product_id %></td>
         <td><%= lineitem.cart_id %></td>
         <td><%= lineitem.order_id %></td>
-        <td><%= link_to 'Show', lineitem %></td>
-        <td><%= link_to 'Edit', edit_lineitem_path(lineitem) %></td>
-        <td><%= link_to 'Destroy', lineitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', lineitem, class: "btn btn-md btn-success" %></td>
+        <td><%= link_to 'Edit', edit_lineitem_path(lineitem), class: "btn btn-md btn-warning" %></td>
+        <td><%= link_to 'Destroy', lineitem, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-danger"%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Lineitem', new_lineitem_path %>

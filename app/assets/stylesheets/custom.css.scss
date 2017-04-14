@@ -181,6 +181,11 @@ html, body {
  .well {
 	 background-color: #e8e2ce;
  }
+
+ .wellc{
+	  background-color: #e8e2ce;
+		color: red;
+ }
  .well_categories {
  	 background-color: #b7b187;
  }
@@ -388,10 +393,11 @@ html, body {
  height: 50%px;
  left: 10px;
  top: 10px;
- background: black;
+ // background: black;
  overflow: hidden;
  border: solid 5px black;
 }
+
 #homecarousel figure:nth-child(1){transform: rotateY(0deg) translateZ(288px);}
 #homecarousel figure:nth-child(2) { transform: rotateY(40deg) translateZ(288px);}
 #homecarousel figure:nth-child(3) { transform: rotateY(80deg) translateZ(288px);}
@@ -402,8 +408,9 @@ html, body {
 #homecarousel figure:nth-child(8) { transform: rotateY(280deg) translateZ(288px);}
 #homecarousel figure:nth-child(9) { transform: rotateY(320deg) translateZ(288px);}
 
-img{
- -webkit-filter: grayscale(1);
+img
+{
+ // -webkit-filter: grayscale(1);
  cursor: pointer;
  transition: all .5s ease;
 }
@@ -412,11 +419,14 @@ img:hover{
  transform: scale(1.2,1.2);
 }
 
-@keyframes rotation{
- from{
-   transform: rotateY(0deg);
- }
- to{
-   transform: rotateY(360deg);
- }
+@keyframes rotation
+{
+	 from
+	 {
+	   transform: rotateY(0deg);
+	 }
+	 to
+	 {
+	   transform: rotateY(360deg);
+	 }
  }

@@ -1,6 +1,8 @@
 <%= render 'shared/errors', object: @order %>
-
-<div class ='row'>
+<h3> How would you like to pay for making this order </h3>
+<center>
+  <br>
+<div class ='well row'>
     <%= form_for(@order, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 
     <div class="form-group">
@@ -13,6 +15,6 @@
       </div>
     <% end %>
 </div>
-
+</center>
 <br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br>
