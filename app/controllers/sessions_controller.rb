@@ -15,6 +15,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    flash[:info] = "See you soon, Looking forward having you back"
+
 	  if signed_in?
 		  session[:customer_id] = nil
 	  else

@@ -4,6 +4,7 @@ $(document).ready(function(){
   $('div.alert').delay(2000).fadeOut(1000);
 });
 </script>
+
 <% if signed_in? and @current_customer.admin? %>
 	<table class="table table-hover table-bordered" border="2">
 		<thead>
