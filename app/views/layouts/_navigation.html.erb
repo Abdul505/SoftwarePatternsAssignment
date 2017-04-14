@@ -27,14 +27,9 @@
           <li><%= link_to "Categories", categories_path%></li>
 
           <% if signed_in? and @current_customer.admin? %>
-              <li><%= link_to "carts", carts_path%></li>
-          <% end %>
-          <% if signed_in? and @current_customer.admin? %>
               <li><%= link_to "lineitems", lineitems_path%></li>
           <% end %>
-          <% if signed_in? and @current_customer.admin? %>
-              <li><%= link_to "Comments", comments_path%></li>
-          <% end %>
+          
       </ul>
       <!-- end nav bar -->
 

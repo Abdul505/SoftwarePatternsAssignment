@@ -13,6 +13,7 @@ class CustomersController < ApplicationController
   # GET /customers/1.json
   def show
      @customer = Customer.find(params[:id])
+    #  @cinemas = Cinema.near(@customer.address, 10, :order => :distance, :units => :km)
   end
 
   # GET /customers/new
@@ -28,40 +29,31 @@ class CustomersController < ApplicationController
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
-
-    respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-        format.json { render :show, status: :created, location: @customer }
+        flash[:success] = "Customer was successfully created"
+        render'show'
       else
-        format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
+        render'new'
       end
-    end
   end
 
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
-    respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @customer }
+          flash[:success] = "Customer was successfully updated"
+          render 'show'
       else
-        format.html { render :edit }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
+        render 'new'
       end
-    end
   end
 
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
     @customer.destroy
-    respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:danger] = "Customer was successfully deleted"
+    redirect_to root_path
   end
 
   private
@@ -72,7 +64,7 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:l_name, :f_name, :email, :address, :city, :country, :password, :password_confirmation, :admin)
+      params.require(:customer).permit(:l_name, :f_name, :email, :address, :city, :country, :password, :password_confirmation, :admin, :latitude, :longitude)
     end
 
     def require_admin

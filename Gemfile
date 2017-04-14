@@ -32,6 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 
+#  gem ‘geocoder’ for maps
+gem 'geocoder'
+
 gem 'carrierwave'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

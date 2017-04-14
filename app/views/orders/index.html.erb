@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<div class="container">
 <h1>Listing Orders</h1>
 <br>
-<table class="table table-hover thead-inverse"  border="3">
+<table class="table table-hover table-bordered thead-inverse"  border="1">
   <thead>
     <tr>
       <th>Paymethod</th>
@@ -18,10 +18,9 @@
         <td><%=order.paymethod %></td>
         <td><%=order.total%></td>
         <td><%=order.customer_id %></td>
-        <td><%= link_to 'Show', order, class: "btn btn-md btn-success" %></td>
-        <td><%= link_to 'Edit', edit_order_path(order), class: "btn btn-md btn-warning" %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-danger" %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-danger btn-block" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
