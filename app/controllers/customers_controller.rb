@@ -12,7 +12,8 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
-     @customer = Customer.find(params[:id])
+     @customer = Customer.find(params[:id]).decorate
+     #@user = User.find(params[:id]).decorate
     #  @cinemas = Cinema.near(@customer.address, 10, :order => :distance, :units => :km)
   end
 

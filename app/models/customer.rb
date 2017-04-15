@@ -16,3 +16,11 @@ class Customer < ActiveRecord::Base
   after_validation :geocode, :if => :address_changed?
 
 end
+
+class CustomerDecorator < Draper::Decorator
+  delegate_all
+
+  def full_name
+    "#{object.f_name} #{object.l_name}"
+  end
+end

@@ -35,6 +35,9 @@ gem 'bootstrap-will_paginate', '0.0.10'
 #  gem ‘geocoder’ for maps
 gem 'geocoder'
 
+#draper gem
+gem 'draper'
+
 gem 'carrierwave'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
