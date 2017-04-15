@@ -178,14 +178,20 @@ html, body {
 	 list-style: none;
 	 padding-left: 0;
  }
+ // main well
  .well {
 	 background-color: #e8e2ce;
  }
-
+// well for comment content
+.wellsp{
+	background-color: #DEB082;
+}
+// well in comment index
  .wellc{
 	  background-color: #e8e2ce;
 		color: red;
  }
+ // well for coment content as well
  .wellS{
 	 background-color: #5F9EA0;
  }
