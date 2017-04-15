@@ -1,3 +1,4 @@
+require 'Logger'
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authorise, except: [:show, :index]
@@ -7,16 +8,23 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.paginate(page: params[:page], per_page: 12)
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Product viewed by user \n")
   end
 
   def search
       @products = Product.paginate(page: params[:page], per_page: 12).search params[:query]
       unless @products.empty?
+        #Use of logger class to log messages into the log file
+        Logger.instance.log(Time.now.to_s + ": Product searched by user \n")
         render 'index'
       else
         flash[:danger] = "NO Products Were Found !"
         @product = Product.all
+        #Use of logger class to log messages into the log file
+        Logger.instance.log(Time.now.to_s + ": Product not found to user \n")
         render 'index'
+
       end
   end
   # GET /products/1
@@ -27,6 +35,8 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": new Product coming soon \n")
   end
 
   # GET /products/1/edit
@@ -39,6 +49,10 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     if  @product.save
      	flash[:success] = "Product was successfully created"
+
+      #Use of logger class to log messages into the log file
+      Logger.instance.log(Time.now.to_s + ": Product created by admin \n")
+
      	redirect_to  product_path(@product)
     else
       render 'new'
@@ -50,6 +64,8 @@ class ProductsController < ApplicationController
   def update
     if @product.update(product_params)
       flash[:success] = "Product was successfully updated"
+      #Use of logger class to log messages into the log file
+      Logger.instance.log(Time.now.to_s + ": Product updated \n")
       redirect_to product_path(@product)
     else
       render 'edit'
@@ -61,6 +77,8 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
  	  flash[:danger] =  "Product was successfully deleted"
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Product destroyed \n")
  	  redirect_to products_path
   end
 

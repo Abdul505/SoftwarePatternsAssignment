@@ -1,3 +1,4 @@
+require 'Logger'
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, except: [:index, :show]
@@ -6,6 +7,8 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.paginate(page: params[:page], per_page: 10)
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Category viewed by user \n")
   end
 
   # GET /categories/1
@@ -13,6 +16,8 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @category_products = @category.products.paginate(page: params[:page], per_page: 10)
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Category viewed by user \n")
   end
 
   # GET /categories/new
@@ -31,6 +36,8 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       flash[:success] = "Category was created successfully"
+      #Use of logger class to log messages into the log file
+      Logger.instance.log(Time.now.to_s + ": Category created by user \n")
       redirect_to categories_path
     else
       render 'new'
@@ -43,6 +50,8 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
       if @category.update(category_params)
         flash[:success] = "Category name was successfully updated"
+        #Use of logger class to log messages into the log file
+        Logger.instance.log(Time.now.to_s + ": Category updated by user \n")
         redirect_to category_path(@category)
       else
         render 'edit'
@@ -56,6 +65,8 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
+      #Use of logger class to log messages into the log file
+      Logger.instance.log(Time.now.to_s + ": Category destroyed by user \n")
     end
   end
 

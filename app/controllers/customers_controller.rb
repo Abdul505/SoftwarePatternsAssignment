@@ -1,3 +1,4 @@
+require 'Logger'
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   before_action :authorise, only: [:update, :edit, :show]
@@ -7,12 +8,17 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customers = Customer.paginate(page: params[:page], per_page: 10)
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Customers viewed by Admin \n")
   end
 
   # GET /customers/1
   # GET /customers/1.json
   def show
+    # decoreted the user name by using the decorate pattern
      @customer = Customer.find(params[:id]).decorate
+     #Use of logger class to log messages into the log file
+     Logger.instance.log(Time.now.to_s + ": Customer viewed by user and admin \n")
      #@user = User.find(params[:id]).decorate
     #  @cinemas = Cinema.near(@customer.address, 10, :order => :distance, :units => :km)
   end
@@ -20,6 +26,8 @@ class CustomersController < ApplicationController
   # GET /customers/new
   def new
     @customer = Customer.new
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Customer about to sign up \n")
   end
 
   # GET /customers/1/edit
@@ -32,6 +40,8 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
       if @customer.save
         flash[:success] = "Customer was successfully created"
+        #Use of logger class to log messages into the log file
+        Logger.instance.log(Time.now.to_s + ": Customer created \n")
         render'show'
       else
         render'new'
@@ -43,6 +53,9 @@ class CustomersController < ApplicationController
   def update
       if @customer.update(customer_params)
           flash[:success] = "Customer was successfully updated"
+
+          #Use of logger class to log messages into the log file
+          Logger.instance.log(Time.now.to_s + ": Customer was updated \n")
           render 'show'
       else
         render 'new'
@@ -54,6 +67,8 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
     flash[:danger] = "Customer was successfully deleted"
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Customer has been destroyed \n")
     redirect_to root_path
   end
 

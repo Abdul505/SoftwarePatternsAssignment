@@ -22,7 +22,7 @@ $(document).ready(function(){
     <% @orders.each do |order| %>
       <tr>
         <td><%=order.paymethod %></td>
-        <td><%=order.total%></td>
+        <td><%= euro order.total%></td>
         <td><%=order.customer_id %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-md btn-danger btn-block" %></td>
       </tr>

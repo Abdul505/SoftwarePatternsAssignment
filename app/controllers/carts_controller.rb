@@ -1,4 +1,5 @@
 require "AddService"
+require 'Logger'
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
@@ -6,6 +7,8 @@ class CartsController < ApplicationController
   # GET /carts.json
   def index
     @carts = Cart.all
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Cart viewed by user \n")
   end
 
   # GET /carts/1
@@ -15,6 +18,8 @@ class CartsController < ApplicationController
     @cart.lineitems.each{|line|
       @total = AddService.call(@total.to_i, line.product.price * line.quantity)
     }
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Cart viewed by user \n")
   end
 
   # GET /carts/new
@@ -30,6 +35,9 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = Cart.new(cart_params)
+
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Cart created by user \n")
 
     respond_to do |format|
       if @cart.save
@@ -49,6 +57,9 @@ class CartsController < ApplicationController
       if @cart.update(cart_params)
         format.html { redirect_to @cart, success: 'Cart was successfully updated.' }
         format.json { render :show, status: :ok, location: @cart }
+
+        #Use of logger class to log messages into the log file
+        Logger.instance.log(Time.now.to_s + ": Cart updated by user \n")
       else
         format.html { render :edit }
         format.json { render json: @cart.errors, status: :unprocessable_entity }
@@ -61,6 +72,8 @@ class CartsController < ApplicationController
   def destroy
     @cart.destroy if @cart.id == session[:cart_id]
     flash[:success] = "Cart was successfully empty"
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Cart destroyed by user \n")
     redirect_to products_path
   end
 # private class data pattern

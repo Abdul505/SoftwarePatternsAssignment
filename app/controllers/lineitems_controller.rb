@@ -7,6 +7,8 @@ class LineitemsController < ApplicationController
   # GET /lineitems.json
   def index
       @lineitems = Lineitem.all
+      #Use of logger class to log messages into the log file
+      Logger.instance.log(Time.now.to_s + ": Product viewed in cart by user \n")
   end
 
   # GET /lineitems/1
@@ -26,10 +28,10 @@ class LineitemsController < ApplicationController
   # POST /lineitems
   # POST /lineitems.json
   def create
-    #Use of logger class to log messages into the log file
-    Logger.instance.log(Time.now.to_s + ': Product added to cart by user \n')
     product = Product.find (params[:product_id])
       @lineitem = @cart.add_product(product.id)
+      #Use of logger class to log messages into the log file
+      Logger.instance.log(Time.now.to_s + ": Product added to cart by user \n")
 
       respond_to do |format|
         if @lineitem.save
@@ -49,6 +51,9 @@ class LineitemsController < ApplicationController
       if @lineitem.update(lineitem_params)
         format.html { redirect_to @lineitem, notice: 'Lineitem was successfully updated.' }
         format.json { render :show, status: :ok, location: @lineitem }
+
+        #Use of logger class to log messages into the log file
+        Logger.instance.log(Time.now.to_s + ": Product updated in cart by user \n")
       else
         format.html { render :edit }
         format.json { render json: @lineitem.errors, status: :unprocessable_entity }
@@ -63,6 +68,9 @@ class LineitemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to lineitems_url, notice: 'Lineitem was successfully destroyed.' }
       format.json { head :no_content }
+
+      #Use of logger class to log messages into the log file
+      Logger.instance.log(Time.now.to_s + ": Product destroyed from cart by user \n")
     end
   end
 

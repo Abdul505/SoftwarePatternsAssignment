@@ -1,3 +1,4 @@
+require 'Logger'
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :authorise, only: [:new, :create]
@@ -29,9 +30,11 @@ class CommentsController < ApplicationController
 		@comment.customer_id = @current_customer.id
 		@comment.save
 
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ": Customer made a comment \n")
     if @comment.save
       flash[:success] = "You have just commented below"
-      redirect_to products_path
+      render "products/show"
     else
       render 'new'
     end
@@ -44,6 +47,8 @@ class CommentsController < ApplicationController
       if @comment.update(comment_params)
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
+        #Use of logger class to log messages into the log file
+        Logger.instance.log(Time.now.to_s + ": admin updated a comment \n")
       else
         format.html { render :edit }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -58,6 +63,8 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
+      #Use of logger class to log messages into the log file
+      Logger.instance.log(Time.now.to_s + ": admin destroyed a comment \n")
     end
   end
 
