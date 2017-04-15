@@ -1,3 +1,4 @@
+require 'Logger'
 class LineitemsController < ApplicationController
   before_action :current_cart, only: [:create]
   before_action :set_lineitem, only: [:show, :edit, :update, :destroy]
@@ -25,6 +26,8 @@ class LineitemsController < ApplicationController
   # POST /lineitems
   # POST /lineitems.json
   def create
+    #Use of logger class to log messages into the log file
+    Logger.instance.log(Time.now.to_s + ': Product added to cart by user \n')
     product = Product.find (params[:product_id])
       @lineitem = @cart.add_product(product.id)
 
