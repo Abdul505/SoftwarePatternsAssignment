@@ -1,3 +1,4 @@
+require "AddService"
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
@@ -10,6 +11,10 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    @total = 0
+    @cart.lineitems.each{|line|
+      @total = AddService.call(@total.to_i, line.product.price * line.quantity)
+    }
   end
 
   # GET /carts/new
@@ -58,7 +63,7 @@ class CartsController < ApplicationController
     flash[:success] = "Cart was successfully empty"
     redirect_to products_path
   end
-
+# private class data pattern
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart

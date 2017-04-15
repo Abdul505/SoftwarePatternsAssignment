@@ -1,3 +1,4 @@
+require "AddService"
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authorise
@@ -32,8 +33,13 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
+    @total = 0
+    current_cart.lineitems.each{|line|
+      @total = AddService.call(@total.to_i, line.product.price * line.quantity)
+    }
     @order.add_lineitem_from_cart(current_cart)
     @order.customer_id = @current_customer.id
+    @order.total = @total
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil

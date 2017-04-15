@@ -17,6 +17,9 @@
               </td>
             </tr>
    	 		<% end %>
+				<tr>
+					<td colspan = 3> Total: <%= @total %> </td>
+				</tr>
 		</tbody>
 </table>
 	<%= link_to "Empty cart", @cart, method: :delete, confirm: 'Are you sure?', class: "btn btn-md btn-danger" %>
