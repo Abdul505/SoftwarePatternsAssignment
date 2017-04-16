@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414162203) do
+ActiveRecord::Schema.define(version: 20170416194231) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20170414162203) do
     t.datetime "updated_at",      null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "level"
+    t.integer  "discount"
   end
 
   create_table "lineitems", force: :cascade do |t|
