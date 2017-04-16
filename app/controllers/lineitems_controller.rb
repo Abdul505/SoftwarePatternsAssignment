@@ -65,13 +65,10 @@ class LineitemsController < ApplicationController
   # DELETE /lineitems/1.json
   def destroy
     @lineitem.destroy
-    respond_to do |format|
-      format.html { redirect_to lineitems_url, notice: 'Lineitem was successfully destroyed.' }
-      format.json { head :no_content }
-
+     flash[:danger] =  'Lineitem was successfully destroyed.'
       #Use of logger class to log messages into the log file
       Logger.instance.log(Time.now.to_s + ": Product destroyed from cart by user \n")
-    end
+      redirect_to lineitems_path
   end
 
   private

@@ -83,7 +83,7 @@ class OrdersController < ApplicationController
       flash[:danger] = 'Order was successfully destroyed.'
       #Use of logger class to log messages into the log file
       Logger.instance.log(Time.now.to_s + ": Order destroyed by user \n")
-      redirect_to root_path
+      redirect_to orders_path
   end
 
   private

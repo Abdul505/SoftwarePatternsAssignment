@@ -1,3 +1,10 @@
+<!--hide alerts-->
+<script>
+$(document).ready(function(){
+  $('div.alert').delay(2000).fadeOut(1000);
+});
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -19,6 +26,3 @@
   <strong>Order:</strong>
   <%= @lineitem.order_id %>
 </p>
-
-<%= link_to 'Edit', edit_lineitem_path(@lineitem) %> |
-<%= link_to 'Back', lineitems_path %>
